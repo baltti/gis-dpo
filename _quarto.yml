@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "Геоинформатика и геоинформационные системы"
+  title: "ДПО Интеллектуальные геоинформационные системы"
   page-footer: |
         © 2025, Татьяна Балтыжакова, Институт дизайна и урбанистики, Университет ИТМО
   navbar:
@@ -27,11 +27,13 @@ website:
       contents:
         - start.qmd
         - basics.qmd
-        - osm.qmd
         - georeferencing.qmd
+        - osm.qmd
         - style.qmd
         - crs.qmd
         - spatial.qmd
+        - thematic mapping.qmd
+        - layout.qmd
         - relief.qmd
 
 format:
