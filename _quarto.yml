@@ -10,7 +10,7 @@ website:
     left:
       - sidebar:practice
       - href: index.qmd
-        text: Лекции
+        text: Теория
       
       
     right: 
@@ -27,11 +27,12 @@ website:
       contents:
         - start.qmd
         - basics.qmd
-        - project.qmd
         - osm.qmd
         - georeferencing.qmd
         - style.qmd
         - crs.qmd
+        - spatial.qmd
+        - relief.qmd
 
 format:
   html:
