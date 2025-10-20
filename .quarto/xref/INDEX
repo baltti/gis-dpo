@@ -1,0 +1,44 @@
+{
+  "01-gis-intro.qmd": {
+    "01-gis-intro.html": "0574b59e"
+  },
+  "02-data-models.qmd": {
+    "02-data-models.html": "2b76d592"
+  },
+  "03-coordinate-reference-systems.qmd": {
+    "03-coordinate-reference-systems.html": "ffd47bb5"
+  },
+  "relief.qmd": {
+    "relief.html": "c1054a89"
+  },
+  "thematic mapping.qmd": {
+    "thematic mapping.html": "2edb28dd"
+  },
+  "index.qmd": {
+    "index.html": "b10326f7"
+  },
+  "spatial.qmd": {
+    "spatial.html": "d1a50a58"
+  },
+  "start.qmd": {
+    "start.html": "b4d2a8be"
+  },
+  "basics.qmd": {
+    "basics.html": "63235410"
+  },
+  "style.qmd": {
+    "style.html": "09b26393"
+  },
+  "crs.qmd": {
+    "crs.html": "91c1cbcd"
+  },
+  "osm.qmd": {
+    "osm.html": "736a8d21"
+  },
+  "layout.qmd": {
+    "layout.html": "814fe518"
+  },
+  "georeferencing.qmd": {
+    "georeferencing.html": "71f97869"
+  }
+}
