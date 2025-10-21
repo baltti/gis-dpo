@@ -101,7 +101,7 @@ window.Quarto = {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -127,6 +127,18 @@ window.Quarto = {
     <a class="dropdown-item" href="./start.html">
  <span class="dropdown-text">Установка программы</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./basics.html">
+ <span class="dropdown-text">Начало работы</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./style.html">
+ <span class="dropdown-text">Общие настройки стиля объектов</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./layout.html">
+ <span class="dropdown-text">Оформление карт и макеты</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -151,10 +163,51 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./layout.html">Оформление карт и макеты</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./start.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Установка программы</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Начало работы</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./style.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Общие настройки стиля объектов</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./layout.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Оформление карт и макеты</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -168,13 +221,6 @@ window.Quarto = {
   <li><a href="#масштабная-линейка" id="toc-масштабная-линейка" class="nav-link" data-scroll-target="#масштабная-линейка">Масштабная линейка</a></li>
   <li><a href="#легенда" id="toc-легенда" class="nav-link" data-scroll-target="#легенда">Легенда</a></li>
   <li><a href="#указатель-направления-на-север" id="toc-указатель-направления-на-север" class="nav-link" data-scroll-target="#указатель-направления-на-север">Указатель направления на север</a></li>
-  </ul></li>
-  <li><a href="#создание-атласа" id="toc-создание-атласа" class="nav-link" data-scroll-target="#создание-атласа">Создание атласа</a>
-  <ul class="collapse">
-  <li><a href="#настройка-листов-атласа" id="toc-настройка-листов-атласа" class="nav-link" data-scroll-target="#настройка-листов-атласа">Настройка листов атласа</a></li>
-  <li><a href="#масштабирование-листов-атласа" id="toc-масштабирование-листов-атласа" class="nav-link" data-scroll-target="#масштабирование-листов-атласа">Масштабирование листов атласа</a></li>
-  <li><a href="#динамическое-название-листов" id="toc-динамическое-название-листов" class="nav-link" data-scroll-target="#динамическое-название-листов">Динамическое название листов</a></li>
-  <li><a href="#текстовый-объект-с-рассчитываемым-значением" id="toc-текстовый-объект-с-рассчитываемым-значением" class="nav-link" data-scroll-target="#текстовый-объект-с-рассчитываемым-значением">Текстовый объект с рассчитываемым значением</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -342,23 +388,6 @@ window.Quarto = {
 </section>
 <section id="указатель-направления-на-север" class="level2">
 <h2 class="anchored" data-anchor-id="указатель-направления-на-север">Указатель направления на север</h2>
-</section>
-</section>
-<section id="создание-атласа" class="level1">
-<h1>Создание атласа</h1>
-<p>Атлас в QGIS позволяет автоматически создать несколько листов карты на основе какого-то условия группировки.</p>
-<p>Например, мы можем сделать атлас для нашей карты с количеством населения в муниципальных образованиях, где на одном листе будет показан один район.</p>
-<section id="настройка-листов-атласа" class="level2">
-<h2 class="anchored" data-anchor-id="настройка-листов-атласа">Настройка листов атласа</h2>
-</section>
-<section id="масштабирование-листов-атласа" class="level2">
-<h2 class="anchored" data-anchor-id="масштабирование-листов-атласа">Масштабирование листов атласа</h2>
-</section>
-<section id="динамическое-название-листов" class="level2">
-<h2 class="anchored" data-anchor-id="динамическое-название-листов">Динамическое название листов</h2>
-</section>
-<section id="текстовый-объект-с-рассчитываемым-значением" class="level2">
-<h2 class="anchored" data-anchor-id="текстовый-объект-с-рассчитываемым-значением">Текстовый объект с рассчитываемым значением</h2>
 
 
 </section>

@@ -26,6 +26,9 @@ website:
       collapse-level: 1
       contents:
         - start.qmd
+        - basics.qmd
+        - style.qmd
+        - layout.qmd
 
 format:
   html:

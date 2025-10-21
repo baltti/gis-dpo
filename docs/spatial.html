@@ -68,6 +68,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -97,6 +126,18 @@ ul.task-list li input[type="checkbox"] {
         <li>
     <a class="dropdown-item" href="./start.html">
  <span class="dropdown-text">Установка программы</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./basics.html">
+ <span class="dropdown-text">Начало работы</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./style.html">
+ <span class="dropdown-text">Общие настройки стиля объектов</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./layout.html">
+ <span class="dropdown-text">Оформление карт и макеты</span></a>
   </li>  
     </ul>
   </li>
@@ -132,14 +173,21 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Содержание</h2>
    
   <ul>
-  <li><a href="#создание-буферных-зон" id="toc-создание-буферных-зон" class="nav-link active" data-scroll-target="#создание-буферных-зон">Создание буферных зон</a></li>
-  <li><a href="#сетевой-анализ" id="toc-сетевой-анализ" class="nav-link" data-scroll-target="#сетевой-анализ">Сетевой анализ</a></li>
-  <li><a href="#оверлейные-операции" id="toc-оверлейные-операции" class="nav-link" data-scroll-target="#оверлейные-операции">Оверлейные операции</a></li>
-  <li><a href="#пространственное-объединение" id="toc-пространственное-объединение" class="nav-link" data-scroll-target="#пространственное-объединение">Пространственное объединение</a>
+  <li><a href="#расчет-площади-объектов" id="toc-расчет-площади-объектов" class="nav-link active" data-scroll-target="#расчет-площади-объектов">Расчет площади объектов</a></li>
+  <li><a href="#расчет-коэффицента-застройки" id="toc-расчет-коэффицента-застройки" class="nav-link" data-scroll-target="#расчет-коэффицента-застройки">Расчет коэффицента застройки</a>
   <ul class="collapse">
-  <li><a href="#использование-функций-панели-инструментов-анализа" id="toc-использование-функций-панели-инструментов-анализа" class="nav-link" data-scroll-target="#использование-функций-панели-инструментов-анализа">Использование функций панели инструментов анализа</a></li>
-  <li><a href="#агрегирующие-функции" id="toc-агрегирующие-функции" class="nav-link" data-scroll-target="#агрегирующие-функции">Агрегирующие функции</a></li>
+  <li><a href="#использование-пространственного-объединения" id="toc-использование-пространственного-объединения" class="nav-link" data-scroll-target="#использование-пространственного-объединения">Использование пространственного объединения</a></li>
+  <li><a href="#использование-функций-агрегирования" id="toc-использование-функций-агрегирования" class="nav-link" data-scroll-target="#использование-функций-агрегирования">Использование функций агрегирования</a></li>
   </ul></li>
+  <li><a href="#создание-буферных-зон" id="toc-создание-буферных-зон" class="nav-link" data-scroll-target="#создание-буферных-зон">Создание буферных зон</a></li>
+  <li><a href="#поиск-объектов-по-расположению" id="toc-поиск-объектов-по-расположению" class="nav-link" data-scroll-target="#поиск-объектов-по-расположению">Поиск объектов по расположению</a>
+  <ul class="collapse">
+  <li><a href="#определение-зданий-попавших-в-границы-буферных-зон" id="toc-определение-зданий-попавших-в-границы-буферных-зон" class="nav-link" data-scroll-target="#определение-зданий-попавших-в-границы-буферных-зон">Определение зданий, попавших в границы буферных зон</a></li>
+  <li><a href="#расчет-количества-доступных-школ" id="toc-расчет-количества-доступных-школ" class="nav-link" data-scroll-target="#расчет-количества-доступных-школ">Расчет количества доступных школ</a></li>
+  <li><a href="#определение-ближайшей-школы-к-зданию" id="toc-определение-ближайшей-школы-к-зданию" class="nav-link" data-scroll-target="#определение-ближайшей-школы-к-зданию">Определение ближайшей школы к зданию</a></li>
+  </ul></li>
+  <li><a href="#оверлейные-операции" id="toc-оверлейные-операции" class="nav-link" data-scroll-target="#оверлейные-операции">Оверлейные операции</a></li>
+  <li><a href="#сетевой-анализ" id="toc-сетевой-анализ" class="nav-link" data-scroll-target="#сетевой-анализ">Сетевой анализ</a></li>
   </ul>
 </nav>
     </div>
@@ -165,8 +213,691 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="расчет-площади-объектов" class="level1">
+<h1>Расчет площади объектов</h1>
+<p>Для расчета площади зданий воспользуемся калькулятором полей в таблице атрибутов.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Напоминание
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Таблица атрибутов может быть открыта из контекстного меню слоя.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2477555248.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="526"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Важно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Расчет площади мы будем осуществлять в том слое, который вы получили по итогам перепроецирования: слой в системе координат UTM.</p>
+</div>
+</div>
+<p>В открывшейся таблице атрибутов вы увидите собственную панель инструментов, на которой вам нужен калькулятор полей.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1045039255.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="2158"></p>
+</figure>
+</div>
+<p>В открывшемся окне калькулятора полей вам нужно создать новое поле с типом данных “десятичное число”, в которое будет записан ваш результат.</p>
+<p>Для расчета площади необходима будет одна из функций из группы <strong>Геометрия</strong>: <code>area()</code>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-485574753.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1489"></p>
+</figure>
+</div>
+<p>Само выражение:</p>
+<pre><code>area ($geometry)</code></pre>
+<p>Что значит аргумент <code>$geometry</code> в скобках?</p>
+<p>Это говорит о том, что для расчета будет использована не какая-то конкретная геометрия одного объекта, а все геометрии слоя.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Важно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Обратите внимание, что у нас есть две функции для расчета площади:</p>
+<ul>
+<li><p><code>$area</code> - расчет площади осуществляется в <em>системе координат проекта на эллипсоиде</em>;</p></li>
+<li><p><code>area()</code> - расчет площади осуществляется в <em>системе координат слоя на плоскости</em>.</p></li>
+</ul>
+<p>Мы используем здесь второй вариант, так как нам необходим расчет именно в системе координат слоя. Для этого мы его и перепроецировали.</p>
+</div>
+</div>
+<p>В результате вычисления вы получите новое поле, в которое будет записана площадь.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2007705995.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="961"></p>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+На заметку
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>В нашем случае площадь будет рассчитана в квадратных метрах, так как мы использовали систему координат слоя, в которой единицами измерения являются метры.</p>
+<p>Это площадь застройки здания, то есть площадь по контуру первого этажа.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Дополнительно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Вы можете аналогично рассчитать периметр здания, воспользовавшись функцией <code>perimeter</code>.</p>
+<p>Общая площадь здания может быть рассчитана как произведение уже рассчитаной вами площади и количества этажей.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2704296193.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="728"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+На заметку
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Вы можете указать это выражение в свойствах слоя в пункте <em>Формы полей</em>, тогда при создании нового объекта площадь для него будет рассчитаваться автоматически.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2535272035.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1253"></p>
+</figure>
+</div>
+<p>Это будет работать для любого вашего вычисляемого поля.</p>
+</div>
+</div>
+</section>
+<section id="расчет-коэффицента-застройки" class="level1">
+<h1>Расчет коэффицента застройки</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+На заметку
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Для расчета коэффициента застройки здесь использован слой <em>кварталы</em>, доступный по ссылке в папке с примерами исходных данных <a href="https://disk.yandex.ru/d/vd3vjPY6mfZC2Q" class="uri">https://disk.yandex.ru/d/vd3vjPY6mfZC2Q</a></p>
+</div>
+</div>
+<p>Что такое коэффициент застройки?</p>
+<p>Это отношение площади, занятой зданиями, к общей площади квартала или иной территориальной единицы.</p>
+<p><span class="math display">\[
+Коэффициент\space застройки = \dfrac{Площадь\space здания}{Площадь \space квартала}
+\]</span></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Важно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Здесь используется площадь здания по наземному контуру, то есть по первому этажу.</p>
+</div>
+</div>
+<section id="использование-пространственного-объединения" class="level2">
+<h2 class="anchored" data-anchor-id="использование-пространственного-объединения">Использование пространственного объединения</h2>
+<p>Наиболее просытм способом расчета здесь будет использование одной из функций <em>Панели инструментов анализа</em> - <em>Объединение атрибутов по расположению (сводка)</em>. Эта функция позволяет присваивать одним векторным объектам агрегированное значение атрибута других векторных объектов на основе их расположения относительно друг друга.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2923347169.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="418"></p>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+На заметку
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Как вы наверняка заметили у нас есть два варианта этой функции: просто <em>Объединение атрибутов по расположению</em> и <em>Объединение атрибутов по расположению (сводка)</em>.</p>
+<p>Первая из них присваивает значение атрибута одних векторных объектов другим на основе их взаимного расположения относительно друг друга. Например, у нас есть слой со зданиями и слой с магазинами, у которых есть атрибут с названием, мы можем с использованием этой функции присвоить зданию название магазина, который в нем расположен.</p>
+<p>Сводка позволяет получить не просто значение атрибута, а его статистическую сводку (среднее, медиану, максимальное и минимальное значения и прочее).</p>
+</div>
+</div>
+<p>В первую очередь необходимо выбрать, какой слой будет использован в качестве исходного, а из какого будут присоединены атрибуты.</p>
+<p>В нашем случае мы будем присоединять атрибуты к объектам слоя с кварталами, а в качестве источника присоединяемых атрибутов будем использовать здания.</p>
+<p><img src="images/clipboard-1901251046.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+На заметку
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>При использовании этого инструмента вам не обязательно брать слои, находящиеся в одной системе координат. Здесь системы координат значений иметь не будут.</p>
+</div>
+</div>
+<p>Кроме того необходимо выбрать геометрический предикат, то есть как должны быть расположены объекты присоединяемого слоя по отношению к объектам исходного слоя.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+На заметку
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Геометрические предикаты показывают пространственные отношения между объектами<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1413833587.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="776"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3448253562.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="776"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-23097189.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="776"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2097404550.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="776"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1739071462.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="776"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3024917096.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="776"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-4157359843.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="776"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>В нашем случае <strong>кварталы содержат в себе здания</strong>, то есть нужный нам предикат - <em>содержит</em>.</p>
+<p>Далее необходимо выбрать поле для составления сводки. Если вы этого не сделаете, то будут использованы все поля присоединяемого слоя.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2259279289.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1409"></p>
+</figure>
+</div>
+<p>Вам необходимо выбрать поле, в котором была рассчитана площадь вашего здания.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3818564217.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="954"></p>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+На заметку
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Для возврата обратно в основное окно инструмента нужно нажать на кнопку <img src="images/clipboard-1733080035.png" class="img-fluid" width="37">.</p>
+</div>
+</div>
+<p>Если вы не выберете сводку для расчета, то инструмент попытается рассчитать все сводки, которые сможет.</p>
+<p>Нам с вами нужна суммарная площадь зданий в каждом квартале.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-579494345.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1268"></p>
+</figure>
+</div>
+<p>Что значит параметр <em>Отбросить записи, которые не могут быть объединены</em>? Если вы поставите напротив него галочку, то при объединении объектов у вас в итоговый слой не попадат кварталы, в которых нет ни одного здания, то есть те объекты исходного слоя, для которых не нашлось соответствия в слое присоединяемом.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Предупреждение
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Обратите внимание, что вам снова предалагают сохранить результат в качестве временного слоя. Вы можете выбрать опцию сохранить в файл.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Важно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Перед тем, как выполнять эту операцию, не забудьте сохранить изменения в вашем слое с кварталами, так как, если вы этого не сделаете, у вас будет пустой атрибут <em>fid</em>, что приведет к ошибке в расчетах.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Дополнительно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Скорее всего при выполнении расчетов вы увидите предупреждение о том, что у вашего слоя нет пространственного индекса и это может привести к более медленным расчетам.</p>
+<p>Это влияет только на скорость выполнения операции.</p>
+</div>
+</div>
+<p>В итоге вы получите новый слой, который выглядит как ваш исходный слой с кварталами, но в атрибутивной таблице которого содержится поле с суммарной площадью зданий внутри квартала.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2523458576.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1612"></p>
+</figure>
+</div>
+<p>Далее вы можете воспользоваться калькулятором полей для того, чтобы рассчитать коэффициент застройки квартала.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3822729774.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1385"></p>
+</figure>
+</div>
+<pre><code>"площадь_sum" / area( $geometry) * 100</code></pre>
+</section>
+<section id="использование-функций-агрегирования" class="level2">
+<h2 class="anchored" data-anchor-id="использование-функций-агрегирования">Использование функций агрегирования</h2>
+<p>Тот же самый расчет можно осуществить сразу в таблице атрибутов ваших кварталов в два или даже один шаг.</p>
+<p>Для этого воспользуемся функцией агрегирования <code>aggregate</code>, которая возвращает агрегированное значение с использованием объектов другого слоя.</p>
+<p>Эта функция является очень гибкой и фактически заменяет оба упомянутых выше инструмента <em>Объединение атрибутов по расположению</em> и <em>Объединение атрибутов по расположению (сводка)</em>.</p>
+<p><img src="images/clipboard-3074514937.png" class="img-fluid"></p>
+<pre><code>aggregate('apartments_UTM_bc6f07c9_7eab_4ca8_87d2_c2e029436076', 
+ aggregate:='sum',expression:="площадь", 
+ filter:=contains(geometry(@parent),@geometry))</code></pre>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Внимание
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Если вы копируете выражение, то не забудьте поменять название слоя и поля для агрегирования на свои.</p>
+</div>
+</div>
+<p>Рассмотрим функцию подробнее.</p>
+<p>Первым аргументом функции указывается название слоя, который будет использоваться для агрегирования (присоединяемый слой). Проще всего выбрать нужный вам слой двойным кликом в группе <em>Слои карты</em> (аналогично тому, как вы выбираете название поля для расчетов в калькуляторе полей).</p>
+<p>Далее идет указание того, какой тип агрегирования должен быть использован. У нас с вами - это <code>sum</code>, то есть сумма.</p>
+<p>Следующий аргумент - <code>expression</code>, который указывает, какое поле необходимо агрегировать. Здесь вам нужно будет прописать название поля самостоятельно.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Важно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Обратите внимание, что в этой функции название поля указывается в двойных кавычках, а название слоя для агрегирования - в одинарных.</p>
+</div>
+</div>
+<p>Последний используемый нами аргумент функции -<code>filter</code> предназначен для фильтрации объектов, то есть здесь он будет указывать на пространственные отношения между нашим исходным слоем и присоединяемым. <code>geometry(@parent)</code> в данном случае указывает на геометрию нашего исходного слоя, а <code>@geometry</code> - на геометрию присоединяемого слоя.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Важно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Не забудьте в функции заменить название слоя на ваше (первый аргумент в скобках) и название поля на то, которое у вас (в двойных кавычках после аргумента <code>expression</code>.</p>
+</div>
+</div>
+<p>Возможно для выполнения расчета придется немного подождать, потому что использование агрегирования здесь довольно трудоемко.</p>
+<p>В результате вы получите новый атрибут со значением суммарной площади зданий в нем.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2261909729.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="599"></p>
+</figure>
+</div>
+<p>Далее аналогично предыдущему разделу вы можете рассчитать коэффициент застройки с использованием калькулятора полей.</p>
+<p>Для проверки можете сравнить между собой два результата.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2985292051.png" class="img-fluid figure-img" width="2060"></p>
+<figcaption>Слева - расчет суммарной площади зданий функцией агрегирования, справа - расчет с использованием пространственного объединения</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+На заметку
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>На самом деле здесь вы могли бы выполнить все в один этап, просто подставив в калькулятор полей вместо поля с суммарным значением площади зданий выражение агрегирования.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Дополнительно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Попробуйте самостоятельно по аналогии рассчитать коэффициент плотности застройки:</p>
+<p><span class="math display">\[
+Коэффициент\space плотности\space застройки = \dfrac{Общая\space площадь\space здания}{Площадь \space квартала}
+\]</span></p>
+</div>
+</div>
+</section>
+</section>
 <section id="создание-буферных-зон" class="level1">
 <h1>Создание буферных зон</h1>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Важно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Перед тем, как строить буферные зоны объектов, следует их перепроецировать в плоскую прямоугольную систему координат.</p>
+</div>
+</div>
+<p>Буферная зона - это область на карте, каждая точка внутри которой находится в пределах заданного расстояния от исходного объекта.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1352830376.png" class="img-fluid figure-img" width="1576"></p>
+<figcaption>Источник: Shen, J.; Chen, L.; Wu, Y.; Jing, N. Approach to Accelerating Dissolved Vector Buffer Generation in Distributed In-Memory Cluster Architecture. ISPRS Int. J. Geo-Inf. 2018, 7, 26. https://doi.org/10.3390/ijgi7010026</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Предупреждение
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Буферные зоны - это один из тех инструментов, которые зависимы от системы координат исходного слоя. То есть размер буфера может быть задан только в единицах измерения слоя.</p>
+</div>
+</div>
+<p>Для создания буферных зон есть одноименный инструмент <em>Буферизация</em> в панели инструментов анализа.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2295926105.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="856"></p>
+</figure>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Дополнительно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Как видите, у нас есть несколько очень похожих инструментов, мы с вами будем пользоваться самым простым из них.</p>
+<p>Что же делают остальные?</p>
+<ul>
+<li><p>буфер переменной ширины - размер буферной зоны будет зависеть от величины какого-то показателя;</p></li>
+<li><p>множественный буфер - создание сразу нескольких буферных зон с определенным шагом по расстоянию;</p></li>
+<li><p>конические буферы (на самом деле клиновидные) - буфер для линейного объекта с разными значениями размера в начале и конце линии;</p></li>
+<li><p>односторонний буфер - создание буфера только с одной стороны линейного объекта;</p></li>
+<li><p>создать клиновидные буферы - создание буферов в форме сектора круга от точечных объектов.</p></li>
+</ul>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3630713758.png" class="img-fluid figure-img" width="574"></p>
+<figcaption>Источник: https://help.axioma-gis.ru/index.html?editing_buffer.html</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1072641176.png" class="img-fluid figure-img" width="574"></p>
+<figcaption>Источник: https://help.axioma-gis.ru/index.html?editing_buffer.html</figcaption>
+</figure>
+</div>
+<p>В качестве размера буферной зоны мы воспользуемся основным градостроительным нормативом доступности для школ - 500 метров до жилых зданий.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+На заметку
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Если вы использовали другие объекты, то вы можете взять другое расстояние.</p>
+<p>Например, для детских садов зона доступности - 300 метров, для поликлиник - 1000 метров.</p>
+<p>Для объектов коммерческой инфраструктуры нормативов нет, но вы можете взять свое произвольное значение.</p>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1525116501.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1520"></p>
+</figure>
+</div>
+<p>Так как в нашем случае буферные зоны строятся для точечных объектов, то основным параметром будет расстояние - размер зоны.</p>
+<p>Также роль будет играть параметр <em>Выполнить слияние результирующих полигонов</em>: при его выборе все полученные полигоны будут объединены в один объект.</p>
+<p>Если вы хотите сразу сохранить свой слой без создания временного файла, то вы можете нажать на кнопку <img src="images/clipboard-4068957659.png" class="img-fluid" width="55"> и выбрать пункт <em>Сохранить в файл</em>, после чего выбрать место для сохранения и указать имя файла.</p>
+<p>В итоге вы увидите новый слой в панели слоев и его отображение на карте.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2114513451.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1088"></p>
+</figure>
+</div>
+</section>
+<section id="поиск-объектов-по-расположению" class="level1">
+<h1>Поиск объектов по расположению</h1>
+<section id="определение-зданий-попавших-в-границы-буферных-зон" class="level2">
+<h2 class="anchored" data-anchor-id="определение-зданий-попавших-в-границы-буферных-зон">Определение зданий, попавших в границы буферных зон</h2>
+<p>Далее мы можем осуществить поиск домов, которые попадают в заданные области обслуживания.</p>
+<p>Для поиска объектов есть группа инструментов <strong>Вектор — Выборка</strong>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+На заметку
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Часть инструментов в ней начинается со слова <em>Выбрать (Выделить)</em>, а часть - <em>Извлечь</em>. Разница между ними в том, что в первом случае объекты просто выделяются в исходном слое, а во втором - объекты, соответствующие заданным условия, извлекаются в новый слой.</p>
+</div>
+</div>
+<p>Краткое описания инструментов:</p>
+<ul>
+<li><p><em>выбрать/извлечь по атрибуту</em> - поиск объектов по значению одного из атрибутов;</p></li>
+<li><p><em>выбрать/извлечь по выражению</em> - поиск объектов по значениям нескольких атрибутов одновременно;</p></li>
+<li><p><em>выбрать/извлечь по пространственному отношению</em> - поиск объектов по их расположению относительно объектов другого слоя;</p></li>
+<li><p><em>выделить/извлечь в пределах расстояния</em> - поиск объектов в пределах заданного расстояния от других объектов;</p></li>
+<li><p><em>случайное выделение/случайное извлечение</em> - случайная выборка объектов из слоя (заданного числа объектов или заданного процента объектов);</p></li>
+<li><p><em>случайное выделение в подмножествах/случайное извлечение в подмножествах</em> - сначала слой разбивается по категориям по одному из атрибутов, потом из каждой категории извлекается заданное число или заданный процент объектов.</p></li>
+</ul>
+<p>Нам нужно определить, какие здания попадают в буферные зоны, поэтому нужно воспользоваться <strong>выбрать\извлечь по пространственному отношению</strong>.</p>
+<p>Для выбора объектов нужно сначала указать в каком слое осуществляется поиск (слой со зданиями), геометрический оператор (как объекты расположены относительно объектов другого слоя) и слой для сравнения (буферные зоны). Геометрические операторы в данном случае лучше выбирать <em>Пересекает</em> и <em>Находится внутри</em>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-126608668.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1514"></p>
+</figure>
+</div>
+<p>По результатам извлечения вы получите новый слой, который будет содержать только здания, удовлетворяющие заданным условиям.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-4146872066.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1119"></p>
+</figure>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Дополнительно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Инструмент <em>Выбрать по расположению</em> работает аналогично, но результатом у вас будет не просто новый слой, а выделенный набор объектов в текущем слое.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Дополнительно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Такеж вы можете попробовать найти здания в пределах заданного расстояния от школ при помощи инструментов <em>Выделить в пределах расстояния/Извлечение в пределах расстояния</em>.</p>
+<p>Однако следует помнить, что расстояние будет определяться в системе координат проекта, поэтому будет отличаться от того, что получено при помощи буферных зон.</p>
+</div>
+</div>
+</section>
+<section id="расчет-количества-доступных-школ" class="level2">
+<h2 class="anchored" data-anchor-id="расчет-количества-доступных-школ">Расчет количества доступных школ</h2>
+<p>Рассчитаем число доступных школ для каждого из наших зданий с использованием выражения агрегирования.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3012975634.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1621"></p>
+</figure>
+</div>
+<pre><code> aggregate( 'school_bufer_f66eb7f4_5fbc_470a_acf4_0fd3649f38e1', aggregate:='count',expression:="osm_id", filter:=within(geometry(@parent),@geometry))</code></pre>
+<p>Как видите, выражение очень похоже на то, что мы уже использовали, меняются только некоторые аргументы.</p>
+<p>Во-первых, используется другой тип агрегирования - <code>count</code>, то есть подсчет количества; во-вторых, используется другое выражение фильтрации - в этом случае мы ищем объекты исходного слоя, <em>попавшие внутрь буферных зон</em>.</p>
+<p>По итогам расчета получен новый атрибут, в котором указано количество школ, находящееся в радиусе доступности.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1515118183.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="2209"></p>
+</figure>
+</div>
+</section>
+<section id="определение-ближайшей-школы-к-зданию" class="level2">
+<h2 class="anchored" data-anchor-id="определение-ближайшей-школы-к-зданию">Определение ближайшей школы к зданию</h2>
+<pre><code>with_variable('nearnp', array_first(overlay_nearest('Населенные пункты',@feature)), 'в ' || round(distance($geometry,geometry(@nearnp))/1000,2) || ' км.' || ' на ' || array_get( array('C','СВ','СВ','В','В','ЮВ','ЮВ','Ю','Ю','ЮЗ','ЮЗ','З','З','СВ','СЗ','СЗ','С'), floor( degrees( azimuth( end_point(shortest_line($geometry,geometry(@nearnp, start_point(shortest_line( $geometry,geometry(@nearnp)))))/22.5) ) || ' от н.п.' ||attribute(@nearnp,'NAME') )</code></pre>
+</section>
+</section>
+<section id="оверлейные-операции" class="level1">
+<h1>Оверлейные операции</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 65%">
+<col style="width: 8%">
+<col style="width: 15%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Название</td>
+<td>Описание</td>
+<td>Логический оператор</td>
+<td>Графическое представление</td>
+</tr>
+<tr class="even">
+<td>Пересечение</td>
+<td><p>Результат включает в себя общие части объектов разных слоев.</p>
+<p>Например, какие области попадают в зону затопления и зону застройки</p></td>
+<td>AND</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Разница</td>
+<td><p>Результат включет в себя только части объектов одного слоя, не совпадающие с объектами другого слоя.</p>
+<p>Например, какие области попадают в зону затопления, но не попадают в зону застройки?</p></td>
+<td>NOT</td>
+<td><img src="images/clipboard-949720384.png" class="img-fluid"></td>
+</tr>
+<tr class="even">
+<td>Объединение</td>
+<td><p>Результатом будут являться части объектов обоих слоев, как совпавшие, так и нет. Другими словами результирующие объекты будут соответствовать хотя бы одному из условий.</p>
+<p>В этом случае дополнительно происходит рассечение объектов одного слоя объектами другого слоя.</p>
+<p>Например, какие области попадают или в зону затопления или в зону застройки.</p></td>
+<td>OR</td>
+<td><img src="images/clipboard-1721169732.png" class="img-fluid"></td>
+</tr>
+<tr class="odd">
+<td>Симметрическая разность</td>
+<td><p>Результат будет включать в себя несовпадающие части объектов разных слоев.</p>
+<p>Например, какие области не попадут ни в зону затопления, ни в зону застройки?</p></td>
+<td>XOR</td>
+<td><img src="images/clipboard-3112970447.png" class="img-fluid"></td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/logical operations.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
 </section>
 <section id="сетевой-анализ" class="level1">
 <h1>Сетевой анализ</h1>
@@ -184,23 +915,17 @@ ul.task-list li input[type="checkbox"] {
 <p>Если у вас стабильная версия QGIS и вы работаете в операционной системе Windows, то у вас будет полноценно работать нужный модуль.</p>
 </div>
 </div>
-</section>
-<section id="оверлейные-операции" class="level1">
-<h1>Оверлейные операции</h1>
-</section>
-<section id="пространственное-объединение" class="level1">
-<h1>Пространственное объединение</h1>
-<section id="использование-функций-панели-инструментов-анализа" class="level2">
-<h2 class="anchored" data-anchor-id="использование-функций-панели-инструментов-анализа">Использование функций панели инструментов анализа</h2>
-</section>
-<section id="агрегирующие-функции" class="level2">
-<h2 class="anchored" data-anchor-id="агрегирующие-функции">Агрегирующие функции</h2>
 
 
 </section>
-</section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Сноски</h2>
+
+<ol>
+<li id="fn1"><p>Типы пространственных отношений <a href="https://fishy-bottle-aa2.notion.site/1bcf188baff3804c9c26f59995850700" class="uri">https://fishy-bottle-aa2.notion.site/1bcf188baff3804c9c26f59995850700</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
