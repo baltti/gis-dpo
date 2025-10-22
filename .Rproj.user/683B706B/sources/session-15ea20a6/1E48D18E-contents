@@ -23,7 +23,7 @@ website:
       
   sidebar:
     - id: practice
-      logo: "images/_logo_whight_9.png"
+      logo: "images/logo.png"
       title: "Практикум"
       style: "docked"
       collapse-level: 1
