@@ -256,7 +256,7 @@ $$
 
 Буферная зона - это область на карте, каждая точка внутри которой находится в пределах заданного расстояния от исходного объекта.
 
-![Источник: Shen, J.; Chen, L.; Wu, Y.; Jing, N. Approach to Accelerating Dissolved Vector Buffer Generation in Distributed In-Memory Cluster Architecture. ISPRS Int. J. Geo-Inf. 2018, 7, 26. https://doi.org/10.3390/ijgi7010026](images/clipboard-1352830376.png){alt="Источник: Shen, J.; Chen, L.; Wu, Y.; Jing, N. Approach to Accelerating Dissolved Vector Buffer Generation in Distributed In-Memory Cluster Architecture. ISPRS Int. J. Geo-Inf. 2018, 7, 26. https://doi.org/10.3390/ijgi7010026" fig-align="center" width="1576"}
+![Источник: Shen, J.; Chen, L.; Wu, Y.; Jing, N. Approach to Accelerating Dissolved Vector Buffer Generation in Distributed In-Memory Cluster Architecture. ISPRS Int. J. Geo-Inf. 2018, 7, 26. https://doi.org/10.3390/ijgi7010026](images/clipboard-1352830376.png){fig-align="center" width="1576"}
 
 ::: callout-caution
 Буферные зоны - это один из тех инструментов, которые зависимы от системы координат исходного слоя. То есть размер буфера может быть задан только в единицах измерения слоя.
@@ -282,9 +282,9 @@ $$
 -   создать клиновидные буферы - создание буферов в форме сектора круга от точечных объектов.
 :::
 
-![Источник: https://help.axioma-gis.ru/index.html?editing_buffer.html](images/clipboard-3630713758.png){alt="Источник: https://help.axioma-gis.ru/index.html?editing_buffer.html" fig-align="center" width="574"}
+![Источник: https://help.axioma-gis.ru/index.html?editing_buffer.html](images/clipboard-3630713758.png){fig-align="center" width="574"}
 
-![Источник: https://help.axioma-gis.ru/index.html?editing_buffer.html](images/clipboard-1072641176.png){alt="Источник: https://help.axioma-gis.ru/index.html?editing_buffer.html" fig-align="center" width="574"}
+![Источник: https://help.axioma-gis.ru/index.html?editing_buffer.html](images/clipboard-1072641176.png){fig-align="center" width="574"}
 
 В качестве размера буферной зоны мы воспользуемся основным градостроительным нормативом доступности для школ - 500 метров до жилых зданий.
 
@@ -381,7 +381,7 @@ with_variable('nearnp', array_first(overlay_nearest('Населенные пун
 # Оверлейные операции
 
 +-------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------------------------------+
-| Название                | Описание                                                                                                                                                                 | Логический оператор | Графическое представление            |
+| Название                | Описание                                                                                                                                                                 | Логический оператор | Графическоепредставление             |
 +-------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------------------------------+
 | Пересечение             | Результат включает в себя общие части объектов разных слоев.                                                                                                             | AND                 |                                      |
 |                         |                                                                                                                                                                          |                     |                                      |
@@ -402,7 +402,7 @@ with_variable('nearnp', array_first(overlay_nearest('Населенные пун
 |                         | Например, какие области не попадут ни в зону затопления, ни в зону застройки?                                                                                            |                     |                                      |
 +-------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------------------------------+
 
-![](images/logical operations.jpg){fig-align="center"}
+![](images/logical%20operations.jpg){fig-align="center"}
 
 # Сетевой анализ
 

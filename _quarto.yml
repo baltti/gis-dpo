@@ -11,6 +11,8 @@ website:
       - sidebar:practice
       - href: index.qmd
         text: Теория
+      - href: homework.qmd
+        text: Задание
       
       
     right: 
@@ -21,6 +23,7 @@ website:
       
   sidebar:
     - id: practice
+      logo: "images/_logo_whight_9.png"
       title: "Практикум"
       style: "docked"
       collapse-level: 1
