@@ -30,8 +30,10 @@ website:
       contents:
         - start.qmd
         - basics.qmd
+        - osm.qmd
         - style.qmd
         - layout.qmd
+        - crs.qmd
 
 format:
   html:
