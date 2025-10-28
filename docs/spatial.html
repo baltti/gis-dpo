@@ -100,7 +100,7 @@ window.Quarto = {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -131,6 +131,10 @@ window.Quarto = {
  <span class="dropdown-text">Начало работы</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="./georeferencing.html">
+ <span class="dropdown-text">Привязка растров и векторизация</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="./osm.html">
  <span class="dropdown-text">Работа с OSM</span></a>
   </li>  
@@ -146,10 +150,18 @@ window.Quarto = {
     <a class="dropdown-item" href="./crs.html">
  <span class="dropdown-text">Работа с системами координат</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./spatial.html">
+ <span class="dropdown-text">Операции пространственного анализа</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./thematic mapping.html">
+ <span class="dropdown-text">Тематические карты</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
 <span class="menu-text">Теория</span></a>
   </li>  
   <li class="nav-item">
@@ -174,10 +186,86 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./spatial.html">Операции пространственного анализа</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./start.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Установка программы</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Начало работы</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./georeferencing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Привязка растров и векторизация</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./osm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Работа с OSM</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./style.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Общие настройки стиля объектов</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./layout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Оформление карт и макеты</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./crs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Работа с системами координат</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./spatial.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Операции пространственного анализа</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./thematic mapping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Тематические карты</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -197,8 +285,10 @@ window.Quarto = {
   <li><a href="#расчет-количества-доступных-школ" id="toc-расчет-количества-доступных-школ" class="nav-link" data-scroll-target="#расчет-количества-доступных-школ">Расчет количества доступных школ</a></li>
   <li><a href="#определение-ближайшей-школы-к-зданию" id="toc-определение-ближайшей-школы-к-зданию" class="nav-link" data-scroll-target="#определение-ближайшей-школы-к-зданию">Определение ближайшей школы к зданию</a></li>
   </ul></li>
-  <li><a href="#оверлейные-операции" id="toc-оверлейные-операции" class="nav-link" data-scroll-target="#оверлейные-операции">Оверлейные операции</a></li>
-  <li><a href="#сетевой-анализ" id="toc-сетевой-анализ" class="nav-link" data-scroll-target="#сетевой-анализ">Сетевой анализ</a></li>
+  <li><a href="#сетевой-анализ" id="toc-сетевой-анализ" class="nav-link" data-scroll-target="#сетевой-анализ">Сетевой анализ</a>
+  <ul class="collapse">
+  <li><a href="#построение-изохрон" id="toc-построение-изохрон" class="nav-link" data-scroll-target="#построение-изохрон">Построение изохрон</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -365,6 +455,7 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <p>Для расчета коэффициента застройки здесь использован слой <em>кварталы</em>, доступный по ссылке в папке с примерами исходных данных <a href="https://disk.yandex.ru/d/vd3vjPY6mfZC2Q" class="uri">https://disk.yandex.ru/d/vd3vjPY6mfZC2Q</a></p>
+<p>Также там представлен слой с жилыми многоквартирными зданиями и школами - <em>building_apartments</em> и <em>schools</em> соответственно.</p>
 </div>
 </div>
 <p>Что такое коэффициент застройки?</p>
@@ -854,61 +945,30 @@ window.Quarto = {
 </section>
 <section id="определение-ближайшей-школы-к-зданию" class="level2">
 <h2 class="anchored" data-anchor-id="определение-ближайшей-школы-к-зданию">Определение ближайшей школы к зданию</h2>
-<pre><code>with_variable('nearnp', array_first(overlay_nearest('Населенные пункты',@feature)), 'в ' || round(distance($geometry,geometry(@nearnp))/1000,2) || ' км.' || ' на ' || array_get( array('C','СВ','СВ','В','В','ЮВ','ЮВ','Ю','Ю','ЮЗ','ЮЗ','З','З','СВ','СЗ','СЗ','С'), floor( degrees( azimuth( end_point(shortest_line($geometry,geometry(@nearnp, start_point(shortest_line( $geometry,geometry(@nearnp)))))/22.5) ) || ' от н.п.' ||attribute(@nearnp,'NAME') )</code></pre>
-</section>
-</section>
-<section id="оверлейные-операции" class="level1">
-<h1>Оверлейные операции</h1>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 10%">
-<col style="width: 65%">
-<col style="width: 8%">
-<col style="width: 15%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>Название</td>
-<td>Описание</td>
-<td>Логический оператор</td>
-<td>Графическоепредставление</td>
-</tr>
-<tr class="even">
-<td>Пересечение</td>
-<td><p>Результат включает в себя общие части объектов разных слоев.</p>
-<p>Например, какие области попадают в зону затопления и зону застройки</p></td>
-<td>AND</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Разница</td>
-<td><p>Результат включет в себя только части объектов одного слоя, не совпадающие с объектами другого слоя.</p>
-<p>Например, какие области попадают в зону затопления, но не попадают в зону застройки?</p></td>
-<td>NOT</td>
-<td><img src="images/clipboard-949720384.png" class="img-fluid"></td>
-</tr>
-<tr class="even">
-<td>Объединение</td>
-<td><p>Результатом будут являться части объектов обоих слоев, как совпавшие, так и нет. Другими словами результирующие объекты будут соответствовать хотя бы одному из условий.</p>
-<p>В этом случае дополнительно происходит рассечение объектов одного слоя объектами другого слоя.</p>
-<p>Например, какие области попадают или в зону затопления или в зону застройки.</p></td>
-<td>OR</td>
-<td><img src="images/clipboard-1721169732.png" class="img-fluid"></td>
-</tr>
-<tr class="odd">
-<td>Симметрическая разность</td>
-<td><p>Результат будет включать в себя несовпадающие части объектов разных слоев.</p>
-<p>Например, какие области не попадут ни в зону затопления, ни в зону застройки?</p></td>
-<td>XOR</td>
-<td><img src="images/clipboard-3112970447.png" class="img-fluid"></td>
-</tr>
-</tbody>
-</table>
+<p>Для расчета расстояния от здания к ближайшему объекту сервиса воспользуемся формулой:</p>
+<pre><code>with_variable('nearnp',
+array_first(overlay_nearest('kindergarten_UTM_d1ac0582_6be2_4fa6_8614_1c4ddf641718',@feature)),
+ round(distance($geometry,geometry(@nearnp)),2) )</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/logical operations.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="images/clipboard-3824681529.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1246"></p>
 </figure>
 </div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Важно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Очень важно, что слои должны быть в одной системе координат, в противном случае функция работать не будет.</p>
+<p>Кроме того, следует помнить, что расстояние будет рассчитываться в единицах измерения используемой системы координат.</p>
+</div>
+</div>
+</section>
 </section>
 <section id="сетевой-анализ" class="level1">
 <h1>Сетевой анализ</h1>
@@ -926,8 +986,91 @@ window.Quarto = {
 <p>Если у вас стабильная версия QGIS и вы работаете в операционной системе Windows, то у вас будет полноценно работать нужный модуль.</p>
 </div>
 </div>
+<p>Один из плагинов, который использует для сетевого анализа задаваемый пользователем граф улично-дорожной сети - это плагин <strong>QNEAT3 - QGIS network analysis toolbox</strong>. После установки модуля он должен появиться в панели инструментов анализа.</p>
+<p>Основные функции этого плагина:</p>
+<ul>
+<li><p>построение матриц времени - origin-destination matrix;</p></li>
+<li><p>построение изохрон в нескольких вариациях;</p></li>
+<li><p>поиск кратчайшего пути между точками.</p></li>
+</ul>
+<section id="построение-изохрон" class="level2">
+<h2 class="anchored" data-anchor-id="построение-изохрон">Построение изохрон</h2>
+<p>Построение изохрон в плагине QNEAT3 возможно в нескольких вариациях от одной точки или от объектов точечного слоя:</p>
+<ul>
+<li><p>линии равного расстояния (равного времени);</p></li>
+<li><p>поверхность интерполяции времени или расстояния;</p></li>
+<li><p>облако точек с характеристиками времения или расстояния;</p></li>
+<li><p>полигональные объекты.</p></li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Важно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Для корректной работы алгоритмов расчета изохрон в этом плагине рекомендуется применять только плоские прямоугольные системы координат (системы координат с единицами измерений в метрах).</p>
+</div>
+</div>
+<p>Построение изохрон от одной точки и от объектов точечного слоя отличается только параметрами на входе и получаемым в результате количеством изохрон, поэтому далее будет рассмотрено построение изохрон от одной точки. Исходная точка может задаваться либо просто кликом на карте, либо ее можно задать по координатам.</p>
+<p>При построении изохрон в виде линий равного расстояния или времени нужно задать:</p>
+<ul>
+<li><p>слой улично-дорожной сети;</p></li>
+<li><p>стартовую точку;</p></li>
+<li><p>размер области, в пределах которой осуществляется расчет (расстояние или время в зависимости от критерия оптимизации);</p></li>
+<li><p>интервал между линиями;</p></li>
+<li><p>размер ячейки растра, получаемого в результате интерполяции;</p></li>
+<li><p>критерий оптимизации</p>
+<ul>
+<li><p>кратчайшее расстояние - оптимизация по расстоянию, в этом случае размер области и интервала задается в единицах измерения системы координат слоя;</p></li>
+<li><p>наиболее быстрый путь - оптимизация по времени, в этом случае размер области и интервал задается в секундах.</p></li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://baltti.github.io/gis-itmo/images/250.PNG" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Остальные параметры являются дополнительными и аналогичны рассмотренным выше.</p>
+<p>Результатом расчета в этом случае будет являться два новых слоя: растр с результатами интерполяции и слой с контурами равного расстояния или времени (в зависимости от выбранного критерия оптимизации).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://baltti.github.io/gis-itmo/images/251.PNG" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>В центре полученного растра и контуров находится исходная точка.</p>
+<p>Результирующий растр показывает более сглаженные промежуточные значения, которые получаются на основе интерполяции значений между контурами.</p>
+<p>Такой же растр получается при расчета изохрон только в виде растровой поверхности (Iso-area as interpolation).</p>
+<p>Построение изохрон как облака точек по параметрам аналогично рассмотреному выше построению в виде линий равного времени или расстояния с небольшими исключениями: здесь указывается только общий размер области, а также можно выбрать метод расчета расстояния (по эллипсоиду или на плоскости).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://baltti.github.io/gis-itmo/images/252.PNG" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>В результате получается слой, содержащий в себе все узлы улично-дорожной сети, каждому из которых присвоен атрибут расстояния (или времени в зависимости от параметра оптимизации).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://baltti.github.io/gis-itmo/images/253.PNG" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Построение изохрон в виде полигональных объектов аналогично построению изохрон в виде линий равного времени/расстояния, только в результате вами будут получены не линейные объекты, а площадные со значениями времени или расстояния (в зависимости от выбранного критерия оптимизации).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://baltti.github.io/gis-itmo/images/254.PNG" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>В результате как и при построении изохрон в виде линий равного времени/расстояния получается два слоя: растровый слой с результатами интерполяции и векторный слой с полигональными объектами.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://baltti.github.io/gis-itmo/images/255.PNG" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
 
 
+</section>
 </section>
 
 

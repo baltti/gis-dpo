@@ -32,10 +32,13 @@ website:
       contents:
         - start.qmd
         - basics.qmd
+        - georeferencing.qmd
         - osm.qmd
         - style.qmd
         - layout.qmd
         - crs.qmd
+        - spatial.qmd
+        - thematic mapping.qmd
 
 format:
   html:
