@@ -39,6 +39,7 @@ website:
         - crs.qmd
         - spatial.qmd
         - thematic mapping.qmd
+        - relief.qmd
 
 format:
   html:

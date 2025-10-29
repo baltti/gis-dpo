@@ -158,6 +158,10 @@ window.Quarto = {
     <a class="dropdown-item" href="./thematic mapping.html">
  <span class="dropdown-text">Тематические карты</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./relief.html">
+ <span class="dropdown-text">Анлиз рельефа</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -262,6 +266,12 @@ window.Quarto = {
  <span class="menu-text">Тематические карты</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./relief.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Анлиз рельефа</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -282,9 +292,9 @@ window.Quarto = {
   <li><a href="#поиск-объектов-по-расположению" id="toc-поиск-объектов-по-расположению" class="nav-link" data-scroll-target="#поиск-объектов-по-расположению">Поиск объектов по расположению</a>
   <ul class="collapse">
   <li><a href="#определение-зданий-попавших-в-границы-буферных-зон" id="toc-определение-зданий-попавших-в-границы-буферных-зон" class="nav-link" data-scroll-target="#определение-зданий-попавших-в-границы-буферных-зон">Определение зданий, попавших в границы буферных зон</a></li>
+  </ul></li>
   <li><a href="#расчет-количества-доступных-школ" id="toc-расчет-количества-доступных-школ" class="nav-link" data-scroll-target="#расчет-количества-доступных-школ">Расчет количества доступных школ</a></li>
   <li><a href="#определение-ближайшей-школы-к-зданию" id="toc-определение-ближайшей-школы-к-зданию" class="nav-link" data-scroll-target="#определение-ближайшей-школы-к-зданию">Определение ближайшей школы к зданию</a></li>
-  </ul></li>
   <li><a href="#сетевой-анализ" id="toc-сетевой-анализ" class="nav-link" data-scroll-target="#сетевой-анализ">Сетевой анализ</a>
   <ul class="collapse">
   <li><a href="#построение-изохрон" id="toc-построение-изохрон" class="nav-link" data-scroll-target="#построение-изохрон">Построение изохрон</a></li>
@@ -925,8 +935,9 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="расчет-количества-доступных-школ" class="level2">
-<h2 class="anchored" data-anchor-id="расчет-количества-доступных-школ">Расчет количества доступных школ</h2>
+</section>
+<section id="расчет-количества-доступных-школ" class="level1">
+<h1>Расчет количества доступных школ</h1>
 <p>Рассчитаем число доступных школ для каждого из наших зданий с использованием выражения агрегирования.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -943,11 +954,11 @@ window.Quarto = {
 </figure>
 </div>
 </section>
-<section id="определение-ближайшей-школы-к-зданию" class="level2">
-<h2 class="anchored" data-anchor-id="определение-ближайшей-школы-к-зданию">Определение ближайшей школы к зданию</h2>
+<section id="определение-ближайшей-школы-к-зданию" class="level1">
+<h1>Определение ближайшей школы к зданию</h1>
 <p>Для расчета расстояния от здания к ближайшему объекту сервиса воспользуемся формулой:</p>
 <pre><code>with_variable('nearnp',
-array_first(overlay_nearest('kindergarten_UTM_d1ac0582_6be2_4fa6_8614_1c4ddf641718',@feature)),
+array_first(overlay_nearest('название слоя со школами',@feature)),
  round(distance($geometry,geometry(@nearnp)),2) )</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -968,7 +979,6 @@ array_first(overlay_nearest('kindergarten_UTM_d1ac0582_6be2_4fa6_8614_1c4ddf6417
 <p>Кроме того, следует помнить, что расстояние будет рассчитываться в единицах измерения используемой системы координат.</p>
 </div>
 </div>
-</section>
 </section>
 <section id="сетевой-анализ" class="level1">
 <h1>Сетевой анализ</h1>

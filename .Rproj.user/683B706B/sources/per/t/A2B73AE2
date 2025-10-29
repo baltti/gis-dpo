@@ -1,0 +1,31 @@
+{
+    "id": "A2B73AE2",
+    "path": "~/Desktop/gravity model/gis-dpo/georeferencing.qmd",
+    "project_path": "georeferencing.qmd",
+    "type": "quarto_markdown",
+    "hash": "1410178412",
+    "contents": "",
+    "dirty": false,
+    "created": 1761721177573.0,
+    "source_on_save": false,
+    "relative_order": 6,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "72,0",
+        "scrollLine": "0",
+        "rmdVisualMode": "true",
+        "rmdVisualWrapConfigured": "true",
+        "docOutlineVisible": "1",
+        "rmdVisualCollapsedChunks": "",
+        "rmdVisualModeLocation": "3802:5302"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1761721184,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1761721184572,
+    "read_only": false,
+    "read_only_alternatives": []
+}
